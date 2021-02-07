@@ -48,4 +48,15 @@ class Student
     sql = "DROP TABLE IF EXISTS students"
     DB[:conn].execute(sql)
   end
+
+  def self.all_students_in_grade_9
+    sql = <<-SQL
+      SELECT * FROM students WHERE grade = 9
+    SQL
+    DB[:conn].execute(sql, name).map { |row| self.new_from_db(row) }
+  end
+
+  def self.all_students_below_12th_grade
+
+  end
 end
