@@ -71,7 +71,7 @@ class Student
   end.first
 
   def first_student_in_grade_10
-    
+
   end
 
   def all_students_in_grade_X(grade)
@@ -80,5 +80,5 @@ class Student
     SQL
     DB[:conn].execute(sql, grade).map { |row| self.new_from_db(row) }
   end
-  
+
 end
