@@ -62,4 +62,23 @@ class Student
     SQL
     DB[:conn].execute(sql).map { |row| self.new_from_db(row) }
   end
+
+  def first_X_students_in_grade_10
+    sql = <<-SQL
+      SELECT * FROM students WHERE grade = 10
+    SQL
+    DB[:conn].execute(sql).map { |row| self.new_from_db(row) }
+  end.first
+
+  def first_student_in_grade_10
+    
+  end
+
+  def all_students_in_grade_X(grade)
+    sql = <<-SQL
+      SELECT * FROM students WHERE grade = ?
+    SQL
+    DB[:conn].execute(sql, grade).map { |row| self.new_from_db(row) }
+  end
+  
 end
